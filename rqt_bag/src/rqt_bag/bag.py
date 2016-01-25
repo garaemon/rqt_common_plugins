@@ -81,7 +81,9 @@ class Bag(Plugin):
         group.add_argument('--clock', action='store_true', help='publish the clock time')
         group.add_argument('bagfiles', type=lambda x: Bag._isfile(parser, x),
                            nargs='*', default=[], help='Bagfiles to load')
-
+        group.add_argument('--record', action='store_true',
+                           help='record topics immediately. Use with --topic option')
+        group.add_argument('--topic', nargs='*', help='topics to record')
     def shutdown_plugin(self):
         self._widget.shutdown_all()
 
